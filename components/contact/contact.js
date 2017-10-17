@@ -8,8 +8,12 @@ import {
   ScrollView,
   Text,
   StyleSheet,
-  Platform,Button
+  Platform,
+  Button,
+  TouchableHighlight
 } from 'react-native';
+
+import t from 'tcomb-form-native';
 
 import {
   Card,
@@ -18,7 +22,7 @@ import {
   CardContent,
   CardAction
 } from 'react-native-card-view';
-import styles from './../../styles';
+
 //import Button from './Button';
 const style_card = StyleSheet.create({
   title: {
@@ -30,6 +34,20 @@ const style_card = StyleSheet.create({
   }
 });
 
+var Form = t.form.Form;
+
+var Person = t.struct({
+  Nombre: t.String,              // a required string
+  Correo: t.String,              // a required string
+  //Correo: t.maybe(t.String),  // an optional string
+  Mensaje: t.String,               // a required number
+  //rememberMe: t.Boolean        // a boolean
+});
+
+var options = {
+  auto: 'placeholders'
+};
+
 export default class MyMainView extends Component {
   setParentState(args){
     this.props.setParentState(args)
@@ -37,153 +55,50 @@ export default class MyMainView extends Component {
 
   render(){
     return (
-      <ScrollView
-        pointerEvents="box-none"
-        style={styles.scrollView}
-        scrollEventThrottle={200}
-        contentInset={{top: 0}}
-        >
-        <View style={styles.container}>
-          <Text style={styles.welcome}>
-            Principal
-          </Text>
-
-          {/*<Button
-            onPress={this.props.openDrawer}
-            title="Open Drawer"
-            />*/}
-
-          {/*type*/}
-          <Text style={styles.categoryLabel}>Noticias</Text>
-          <View style={styles.row}>
-            <View style={styles.col}>
-              <Card>
-                <CardTitle>
-                  <Text style={style_card.title}>Noticia 1</Text>
-                </CardTitle>
-                <CardContent>
-                  <Text>Contenido</Text>
-                </CardContent>
-                <CardAction >
-                  <Button
-                    onPress={() => {}}
-                    title="Leer más"
-                    color="#F19700"
-                    accessibilityLabel="Learn more about this purple button"
-                  />
-                </CardAction>
-              </Card>
-            </View>
-            <View style={styles.col}>
-              <Card>
-                <CardTitle>
-                  <Text style={style_card.title}>Noticia 2</Text>
-                </CardTitle>
-                <CardContent>
-                  <Text>Contenido</Text>
-                </CardContent>
-                <CardAction >
-
-                  <Button
-                    onPress={() => {}}
-                    title="Leer más"
-                    color="#F19700"
-                    accessibilityLabel="Learn more about this purple button"
-                  />
-                </CardAction>
-              </Card>
-            </View>
-          </View>
-
-
-          {/*side*/}
-          <Text style={styles.categoryLabel}>Publicaciones</Text>
-          <View style={styles.row}>
-            <View style={styles.col}>
-              <Card>
-                <CardTitle>
-                  <Text style={style_card.title}>Publicación 1</Text>
-                </CardTitle>
-                <CardContent>
-                  <Text>Contenido</Text>
-                </CardContent>
-                <CardAction >
-                  <Button
-                    onPress={() => {}}
-                    title="Leer más"
-                    color="#F19700"
-                    accessibilityLabel="Learn more about this purple button"
-                  />
-                </CardAction>
-              </Card>
-            </View>
-            <View style={styles.col}>
-              <Card>
-                <CardTitle>
-                  <Text style={style_card.title}>Publicación 2</Text>
-                </CardTitle>
-                <CardContent>
-                  <Text>Contenido</Text>
-                </CardContent>
-                <CardAction >
-
-                  <Button
-                    onPress={() => {}}
-                    title="Leer más"
-                    color="#F19700"
-                    accessibilityLabel="Learn more about this purple button"
-                  />
-                </CardAction>
-              </Card>
-            </View>
-          </View>
-          {/*trigger options*/}
-          <Text style={styles.categoryLabel}>Agencias Destacadas</Text>
-          <View style={styles.row}>
-            <View style={styles.col}>
-              <Card>
-                <CardTitle>
-                  <Text style={style_card.title}>Agencia 1</Text>
-                </CardTitle>
-                <CardContent>
-                  <Text>Contenido</Text>
-                </CardContent>
-                <CardAction >
-                  <Button
-                    onPress={() => {}}
-                    title="Leer más"
-                    color="#F19700"
-                    accessibilityLabel="Learn more about this purple button"
-                  />
-                </CardAction>
-              </Card>
-            </View>
-            <View style={styles.col}>
-              <Card>
-                <CardTitle>
-                  <Text style={style_card.title}>Agencia 2</Text>
-                </CardTitle>
-                <CardContent>
-                  <Text>Contenido</Text>
-                </CardContent>
-                <CardAction >
-                  <Button
-                    onPress={() => {}}
-                    title="Leer más"
-                    color="#F19700"
-                    accessibilityLabel="Learn more about this purple button"
-                  />
-                </CardAction>
-              </Card>
-            </View>
-          </View>
-        </View>
+      <ScrollView style={styles.container}>
+        {/* display */}
+        <Text style={styles.title}>
+          Contáctanos
+        </Text>
+        <Form
+          ref="form"
+          type={Person}
+          options={options}
+        />
+        <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
+          <Text style={styles.buttonText}>Enviar</Text>
+        </TouchableHighlight>
       </ScrollView>
     )
   }
 }
 
-
+var styles = StyleSheet.create({
+  container: {
+    padding: 20,
+    backgroundColor: '#ffffff',
+  },
+  title: {
+    fontSize: 30,
+    alignSelf: 'center',
+    marginBottom: 30
+  },
+  buttonText: {
+    fontSize: 18,
+    color: 'white',
+    alignSelf: 'center'
+  },
+  button: {
+    height: 36,
+    backgroundColor: '#F19700',
+    borderColor: '#F19700',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 10,
+    alignSelf: 'stretch',
+    justifyContent: 'center'
+  }
+});
 
 // Shadow props are not supported in React-Native Android apps.
 // The below part handles this issue.

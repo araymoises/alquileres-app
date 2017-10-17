@@ -45,7 +45,8 @@ export default class MyMainView extends Component {
         >
         <View style={styles.container}>
           <Text style={styles.welcome}>
-            Principal
+            Publicar Gratis
+            
           </Text>
 
           {/*<Button

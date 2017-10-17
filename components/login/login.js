@@ -45,7 +45,7 @@ export default class Another extends Component {
         >
         <View style={styles.container}>
           <Text style={styles.welcome}>
-            Principal
+            Login
           </Text>
 
           {/*<Button
