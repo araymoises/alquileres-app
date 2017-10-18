@@ -16,12 +16,13 @@ module.exports = StyleSheet.create({
   controlPanelText: {
     color:'white',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 25,
-    color: '#f2f2f2',
-    fontWeight:'bold',
+  logo: {
+    flexDirection: 'column',
+    flex: 5
+  },
+  tabIcon: {
+    flexDirection: 'column',
+    flex: 1
   },
   controlPanelWelcome: {
     fontSize: 20,
@@ -31,8 +32,8 @@ module.exports = StyleSheet.create({
     fontWeight:'bold',
   },
   categoryLabel: {
-    fontSize: 15,
-    textAlign: 'left',
+    fontSize: 25,
+    textAlign: 'center',
     left: 10,
     padding:10,
     fontWeight:'bold',

@@ -8,7 +8,10 @@ import {
   ScrollView,
   Text,
   StyleSheet,
-  Platform,Button
+  Platform,
+  Button,
+  Image,
+  TouchableHighlight
 } from 'react-native';
 
 import {
@@ -18,8 +21,11 @@ import {
   CardContent,
   CardAction
 } from 'react-native-card-view';
+
 import styles from './../../styles';
+
 //import Button from './Button';
+import Icon from 'react-native-vector-icons/FontAwesome';
 const style_card = StyleSheet.create({
   title: {
     fontSize: 20,
@@ -44,17 +50,28 @@ export default class MyMainView extends Component {
         contentInset={{top: 0}}
         >
         <View style={styles.container}>
-          <Text style={styles.welcome}>
-            Principal
-          </Text>
-
-          {/*<Button
+          <View style={{flexDirection: 'row'}}>
+            <Text style={styles.logo}>
+            <Image
+              source={require('./logo-negativo.png')}
+            />
+            </Text>
+            <TouchableHighlight onPress={this._onPressButton} style={styles.tabIcon}>
+              <Icon name="navicon" size={40} color="#F19700" />
+            </TouchableHighlight>
+            <TouchableHighlight onPress={this._onPressButton} style={styles.tabIcon}>
+              <Icon name="user" size={40} color="#F19700" />
+            </TouchableHighlight>
+          </View>
+          {/*
+            <Button
             onPress={this.props.openDrawer}
             title="Open Drawer"
-            />*/}
+            />
+          */}
 
           {/*type*/}
-          <Text style={styles.categoryLabel}>Noticias</Text>
+          <Text style={styles.categoryLabel}>NOTICIAS INMOBILIARIAS</Text>
           <View style={styles.row}>
             <View style={styles.col}>
               <Card>
@@ -97,7 +114,7 @@ export default class MyMainView extends Component {
 
 
           {/*side*/}
-          <Text style={styles.categoryLabel}>Publicaciones</Text>
+          <Text style={styles.categoryLabel}>PUBLICACIONES</Text>
           <View style={styles.row}>
             <View style={styles.col}>
               <Card>
@@ -138,7 +155,7 @@ export default class MyMainView extends Component {
             </View>
           </View>
           {/*trigger options*/}
-          <Text style={styles.categoryLabel}>Agencias Destacadas</Text>
+          <Text style={styles.categoryLabel}>AGENCIAS DESTACADAS</Text>
           <View style={styles.row}>
             <View style={styles.col}>
               <Card>

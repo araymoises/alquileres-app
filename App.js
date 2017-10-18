@@ -47,6 +47,12 @@ const App = DrawerNavigator({
   'Login'           : { screen: Login },
   'Publicar Gratis' : { screen: FreePublish },
   'Contacto'        : { screen: Contact }
+},
+{
+  //drawerWidth: 200,
+  drawerPosition: 'right',
+  //contentComponent: props => <ScrollView><DrawerItems {...props} /></ScrollView>,
+  drawerBackgroundColor: 'transparent'
 });
 
 
