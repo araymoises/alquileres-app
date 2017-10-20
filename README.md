@@ -1,1 +1,1 @@
-# My project's README
+npm install && react-native run-android
