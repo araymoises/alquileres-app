@@ -11,6 +11,9 @@ import {
   Platform,Button
 } from 'react-native';
 
+import Header from './../_partials/header/header';
+import Footer from './../_partials/footer/footer';
+
 import {
   Card,
   CardImage,
@@ -44,140 +47,16 @@ export default class MyMainView extends Component {
         contentInset={{top: 0}}
         >
         <View style={styles.container}>
-          <Text style={styles.welcome}>
-            Publicar Gratis
-            
-          </Text>
-
+          <Header />
           {/*<Button
             onPress={this.props.openDrawer}
             title="Open Drawer"
             />*/}
 
-          {/*type*/}
-          <Text style={styles.categoryLabel}>Noticias</Text>
-          <View style={styles.row}>
-            <View style={styles.col}>
-              <Card>
-                <CardTitle>
-                  <Text style={style_card.title}>Noticia 1</Text>
-                </CardTitle>
-                <CardContent>
-                  <Text>Contenido</Text>
-                </CardContent>
-                <CardAction >
-                  <Button
-                    onPress={() => {}}
-                    title="Leer más"
-                    color="#F19700"
-                    accessibilityLabel="Learn more about this purple button"
-                  />
-                </CardAction>
-              </Card>
-            </View>
-            <View style={styles.col}>
-              <Card>
-                <CardTitle>
-                  <Text style={style_card.title}>Noticia 2</Text>
-                </CardTitle>
-                <CardContent>
-                  <Text>Contenido</Text>
-                </CardContent>
-                <CardAction >
+          {/*type}
 
-                  <Button
-                    onPress={() => {}}
-                    title="Leer más"
-                    color="#F19700"
-                    accessibilityLabel="Learn more about this purple button"
-                  />
-                </CardAction>
-              </Card>
-            </View>
-          </View>
-
-
-          {/*side*/}
-          <Text style={styles.categoryLabel}>Publicaciones</Text>
-          <View style={styles.row}>
-            <View style={styles.col}>
-              <Card>
-                <CardTitle>
-                  <Text style={style_card.title}>Publicación 1</Text>
-                </CardTitle>
-                <CardContent>
-                  <Text>Contenido</Text>
-                </CardContent>
-                <CardAction >
-                  <Button
-                    onPress={() => {}}
-                    title="Leer más"
-                    color="#F19700"
-                    accessibilityLabel="Learn more about this purple button"
-                  />
-                </CardAction>
-              </Card>
-            </View>
-            <View style={styles.col}>
-              <Card>
-                <CardTitle>
-                  <Text style={style_card.title}>Publicación 2</Text>
-                </CardTitle>
-                <CardContent>
-                  <Text>Contenido</Text>
-                </CardContent>
-                <CardAction >
-
-                  <Button
-                    onPress={() => {}}
-                    title="Leer más"
-                    color="#F19700"
-                    accessibilityLabel="Learn more about this purple button"
-                  />
-                </CardAction>
-              </Card>
-            </View>
-          </View>
-          {/*trigger options*/}
-          <Text style={styles.categoryLabel}>Agencias Destacadas</Text>
-          <View style={styles.row}>
-            <View style={styles.col}>
-              <Card>
-                <CardTitle>
-                  <Text style={style_card.title}>Agencia 1</Text>
-                </CardTitle>
-                <CardContent>
-                  <Text>Contenido</Text>
-                </CardContent>
-                <CardAction >
-                  <Button
-                    onPress={() => {}}
-                    title="Leer más"
-                    color="#F19700"
-                    accessibilityLabel="Learn more about this purple button"
-                  />
-                </CardAction>
-              </Card>
-            </View>
-            <View style={styles.col}>
-              <Card>
-                <CardTitle>
-                  <Text style={style_card.title}>Agencia 2</Text>
-                </CardTitle>
-                <CardContent>
-                  <Text>Contenido</Text>
-                </CardContent>
-                <CardAction >
-                  <Button
-                    onPress={() => {}}
-                    title="Leer más"
-                    color="#F19700"
-                    accessibilityLabel="Learn more about this purple button"
-                  />
-                </CardAction>
-              </Card>
-            </View>
-          </View>
+          <Footer />
+          */}
         </View>
       </ScrollView>
     )

@@ -3,11 +3,10 @@ const deviceScreen = require('Dimensions').get('window')
 
 module.exports = StyleSheet.create({
   scrollView: {
-    backgroundColor: '#485A96',
   },
   container: {
     flex: 1,
-    backgroundColor: '#485A96',
+    backgroundColor: 'white',
   },
   controlPanel: {
     flex: 1,
@@ -18,10 +17,12 @@ module.exports = StyleSheet.create({
   },
   logo: {
     flexDirection: 'column',
-    flex: 5
+    flex: 4
   },
   tabIcon: {
     flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
     flex: 1
   },
   controlPanelWelcome: {
@@ -32,12 +33,19 @@ module.exports = StyleSheet.create({
     fontWeight:'bold',
   },
   categoryLabel: {
-    fontSize: 25,
+    fontSize: 30,
     textAlign: 'center',
-    left: 10,
+    left: 0,
     padding:10,
     fontWeight:'bold',
-    color: '#f2f2f2'
+    padding:15,
+    borderWidth: 2,
+    borderRadius: 20,
+    borderColor: '#485A96',
+    color: '#F19700'
+  },
+  categoryContainer: {
+    margin: 20,
   },
   col: {
     flexDirection: 'column',

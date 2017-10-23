@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+
 import {
   Switch,
   SliderIOS,
+  Picker,
   PickerIOS,
   PickerItemIOS,
   View,
@@ -23,9 +25,13 @@ import {
 } from 'react-native-card-view';
 
 import styles from './../../styles';
+import Header from './../_partials/header/header';
+import Footer from './../_partials/footer/footer';
+
 
 //import Button from './Button';
 import Icon from 'react-native-vector-icons/FontAwesome';
+
 const style_card = StyleSheet.create({
   title: {
     fontSize: 20,
@@ -50,36 +56,46 @@ export default class MyMainView extends Component {
         contentInset={{top: 0}}
         >
         <View style={styles.container}>
-          <View style={{flexDirection: 'row'}}>
-            <Text style={styles.logo}>
-            <Image
-              source={require('./logo-negativo.png')}
-            />
-            </Text>
-            <TouchableHighlight onPress={this._onPressButton} style={styles.tabIcon}>
-              <Icon name="navicon" size={40} color="#F19700" />
-            </TouchableHighlight>
-            <TouchableHighlight onPress={this._onPressButton} style={styles.tabIcon}>
-              <Icon name="user" size={40} color="#F19700" />
-            </TouchableHighlight>
-          </View>
-          {/*
+          <Header />
+
+          <View style={localStyles.homeFiltroContainer}>
+            <Text  style={localStyles.homeFiltroTitle}>Realiza tu búsqueda aquí</Text>
+            <Picker
+              //selectedValue={this.state.language}
+              onValueChange={(itemValue, itemIndex) => this.setState({language: itemValue})}>
+              <Picker.Item label="¿Qué buscas?" value="¿Qué buscas?" />
+              <Picker.Item label="Prueba" value="prueba" />
+            </Picker>
+            <Picker
+              //selectedValue={this.state.language}
+              onValueChange={(itemValue, itemIndex) => this.setState({language: itemValue})}>
+              <Picker.Item label="Operación" value="Operacion" />
+              <Picker.Item label="Prueba" value="prueba" />
+            </Picker>
             <Button
-            onPress={this.props.openDrawer}
-            title="Open Drawer"
+              style={{width: 10}}
+              onPress={() => {}}
+              title="Buscar"
+              color="#F19700"
+              accessibilityLabel="Learn more about this purple button"
             />
-          */}
+          </View>
 
           {/*type*/}
-          <Text style={styles.categoryLabel}>NOTICIAS INMOBILIARIAS</Text>
-          <View style={styles.row}>
-            <View style={styles.col}>
+          <View style={styles.categoryContainer}>
+            <Text style={styles.categoryLabel}>NOTICIAS INMOBILIARIAS</Text>
+          </View>
+          <View>
+            <View style={styles.row}>
               <Card>
                 <CardTitle>
-                  <Text style={style_card.title}>Noticia 1</Text>
+                  <Image
+                    style={{height:200, width:200}}
+                    source={require('./casa.png')}
+                  />
                 </CardTitle>
                 <CardContent>
-                  <Text>Contenido</Text>
+                  <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
                 </CardContent>
                 <CardAction >
                   <Button
@@ -91,13 +107,16 @@ export default class MyMainView extends Component {
                 </CardAction>
               </Card>
             </View>
-            <View style={styles.col}>
+            <View style={styles.row}>
               <Card>
                 <CardTitle>
-                  <Text style={style_card.title}>Noticia 2</Text>
+                <Image
+                  style={{height:200, width:200}}
+                  source={require('./casa.png')}
+                />
                 </CardTitle>
                 <CardContent>
-                  <Text>Contenido</Text>
+                  <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
                 </CardContent>
                 <CardAction >
 
@@ -114,56 +133,20 @@ export default class MyMainView extends Component {
 
 
           {/*side*/}
-          <Text style={styles.categoryLabel}>PUBLICACIONES</Text>
-          <View style={styles.row}>
-            <View style={styles.col}>
-              <Card>
-                <CardTitle>
-                  <Text style={style_card.title}>Publicación 1</Text>
-                </CardTitle>
-                <CardContent>
-                  <Text>Contenido</Text>
-                </CardContent>
-                <CardAction >
-                  <Button
-                    onPress={() => {}}
-                    title="Leer más"
-                    color="#F19700"
-                    accessibilityLabel="Learn more about this purple button"
-                  />
-                </CardAction>
-              </Card>
-            </View>
-            <View style={styles.col}>
-              <Card>
-                <CardTitle>
-                  <Text style={style_card.title}>Publicación 2</Text>
-                </CardTitle>
-                <CardContent>
-                  <Text>Contenido</Text>
-                </CardContent>
-                <CardAction >
-
-                  <Button
-                    onPress={() => {}}
-                    title="Leer más"
-                    color="#F19700"
-                    accessibilityLabel="Learn more about this purple button"
-                  />
-                </CardAction>
-              </Card>
-            </View>
+          <View style={styles.categoryContainer}>
+            <Text style={styles.categoryLabel}>PUBLICACIONES</Text>
           </View>
-          {/*trigger options*/}
-          <Text style={styles.categoryLabel}>AGENCIAS DESTACADAS</Text>
-          <View style={styles.row}>
-            <View style={styles.col}>
+          <View>
+            <View style={styles.row}>
               <Card>
                 <CardTitle>
-                  <Text style={style_card.title}>Agencia 1</Text>
+                  <Image
+                    style={{height:200, width:200}}
+                    source={require('./casa.png')}
+                  />
                 </CardTitle>
                 <CardContent>
-                  <Text>Contenido</Text>
+                <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
                 </CardContent>
                 <CardAction >
                   <Button
@@ -175,13 +158,16 @@ export default class MyMainView extends Component {
                 </CardAction>
               </Card>
             </View>
-            <View style={styles.col}>
+            <View style={styles.row}>
               <Card>
                 <CardTitle>
-                  <Text style={style_card.title}>Agencia 2</Text>
+                  <Image
+                    style={{height:200, width:200}}
+                    source={require('./casa.png')}
+                  />
                 </CardTitle>
                 <CardContent>
-                  <Text>Contenido</Text>
+                <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
                 </CardContent>
                 <CardAction >
                   <Button
@@ -194,6 +180,55 @@ export default class MyMainView extends Component {
               </Card>
             </View>
           </View>
+          {/*trigger options*/}
+          <View style={styles.categoryContainer}>
+            <Text style={styles.categoryLabel}>AGENCIAS DESTACADAS</Text>
+          </View>
+          <View>
+            <View style={styles.row}>
+              <Card>
+                <CardTitle>
+                  <Image
+                    style={{height:200, width:200}}
+                    source={require('./casa.png')}
+                  />
+                </CardTitle>
+                <CardContent>
+                <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+                </CardContent>
+                <CardAction >
+                  <Button
+                    onPress={() => {}}
+                    title="Leer más"
+                    color="#F19700"
+                    accessibilityLabel="Learn more about this purple button"
+                  />
+                </CardAction>
+              </Card>
+            </View>
+            <View style={styles.row}>
+              <Card>
+                <CardTitle>
+                  <Image
+                    style={{height:200, width:200}}
+                    source={require('./casa.png')}
+                  />
+                </CardTitle>
+                <CardContent>
+                <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+                </CardContent>
+                <CardAction >
+                  <Button
+                    onPress={() => {}}
+                    title="Leer más"
+                    color="#F19700"
+                    accessibilityLabel="Learn more about this purple button"
+                  />
+                </CardAction>
+              </Card>
+            </View>
+          </View>
+          <Footer />
         </View>
       </ScrollView>
     )
@@ -221,6 +256,20 @@ var iosStyles = StyleSheet.create({
     shadowRadius: 5,
     shadowOpacity: 0.75,
   }
+});
+
+var localStyles = StyleSheet.create({
+  homeFiltroContainer: {
+    padding: 40,
+  },
+  homeFiltroTitle: {
+    fontSize: 30,
+    textAlign: 'center',
+    color: '#F19700',
+    fontWeight:'bold',
+
+
+  },
 });
 
 const iosMinTrTintColor = '#1073ff';

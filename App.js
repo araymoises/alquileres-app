@@ -12,7 +12,6 @@ import {
   View
 } from 'react-native';
 
-
 import Home from './components/home/home';
 import Login from './components/login/login';
 import FreePublish from './components/freePublish/freePublish';

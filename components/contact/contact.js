@@ -15,6 +15,10 @@ import {
 
 import t from 'tcomb-form-native';
 
+import Header from './../_partials/header/header';
+import Footer from './../_partials/footer/footer';
+
+
 import {
   Card,
   CardImage,
@@ -43,7 +47,6 @@ var Person = t.struct({
   Mensaje: t.String,               // a required number
   //rememberMe: t.Boolean        // a boolean
 });
-
 var options = {
   auto: 'placeholders'
 };
@@ -55,19 +58,23 @@ export default class MyMainView extends Component {
 
   render(){
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView>
+        <Header />
         {/* display */}
-        <Text style={styles.title}>
-          Contáctanos
-        </Text>
-        <Form
-          ref="form"
-          type={Person}
-          options={options}
-        />
-        <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
-          <Text style={styles.buttonText}>Enviar</Text>
-        </TouchableHighlight>
+        <View style={styles.container}>
+          <Text style={styles.title}>
+            Contáctanos
+          </Text>
+          <Form
+            ref="form"
+            type={Person}
+            options={options}
+          />
+          <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
+            <Text style={styles.buttonText}>Enviar</Text>
+          </TouchableHighlight>
+        </View>
+        <Footer />
       </ScrollView>
     )
   }
@@ -76,7 +83,7 @@ export default class MyMainView extends Component {
 var styles = StyleSheet.create({
   container: {
     padding: 20,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#cbd2e6',
   },
   title: {
     fontSize: 30,
