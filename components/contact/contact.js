@@ -10,7 +10,8 @@ import {
   StyleSheet,
   Platform,
   Button,
-  TouchableHighlight
+  TouchableHighlight,
+  Linking
 } from 'react-native';
 
 import t from 'tcomb-form-native';
@@ -58,8 +59,10 @@ export default class MyMainView extends Component {
 
   render(){
     return (
-      <ScrollView>
-        <Header />
+      <View style={{backgroundColor: '#485A96', flex: 1}}>
+        <View style={{flex: 0.5}}>
+          <Header />
+        </View>
         {/* display */}
         <View style={styles.container}>
           <Text style={styles.title}>
@@ -74,8 +77,10 @@ export default class MyMainView extends Component {
             <Text style={styles.buttonText}>Enviar</Text>
           </TouchableHighlight>
         </View>
-        <Footer />
-      </ScrollView>
+        <View style={{flex: 1}}>
+          <Footer />
+        </View>
+      </View>
     )
   }
 }
@@ -84,6 +89,7 @@ var styles = StyleSheet.create({
   container: {
     padding: 20,
     backgroundColor: '#cbd2e6',
+    flex: 4
   },
   title: {
     fontSize: 30,

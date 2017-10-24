@@ -8,11 +8,18 @@ import {
   ScrollView,
   Text,
   StyleSheet,
-  Platform,Button
+  Platform,
+  Button,
+  TouchableHighlight,
+  Linking
 } from 'react-native';
+
+import t from 'tcomb-form-native';
 
 import Header from './../_partials/header/header';
 import Footer from './../_partials/footer/footer';
+
+import CheckBox from 'react-native-checkbox';
 
 import {
   Card,
@@ -21,7 +28,7 @@ import {
   CardContent,
   CardAction
 } from 'react-native-card-view';
-import styles from './../../styles';
+
 //import Button from './Button';
 const style_card = StyleSheet.create({
   title: {
@@ -33,38 +40,125 @@ const style_card = StyleSheet.create({
   }
 });
 
-export default class Another extends Component {
+const Email = t.refinement(t.String, email => {
+  const reg = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/; //or any other regexp
+  return reg.test(email);
+});
+
+
+var Form = t.form.Form;
+
+var Person = t.struct({
+  Correo: Email,               // a required string
+  //Correo: t.maybe(t.String), // an optional string
+  Password: t.String,          // a required number
+  //rememberMe: t.Boolean        // a boolean
+});
+var options = {
+  auto: 'placeholders',
+  fields: {
+    Password: {
+      password: true,
+      secureTextEntry: true
+    }
+  }
+};
+
+export default class MyMainView extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoading: true
+    }
+  }
+
   setParentState(args){
     this.props.setParentState(args)
   }
 
+  getData(){
+    return fetch('https://facebook.github.io/react-native/movies.json')
+    .then((data) => data.json())
+    .then((dataJson) =>{
+      alert(dataJson.movies[0].title);
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+  }
+
+  componentDidMount(){
+    this.getData();
+  }
+
   render(){
     return (
-      <ScrollView
-        pointerEvents="box-none"
-        style={styles.scrollView}
-        scrollEventThrottle={200}
-        contentInset={{top: 0}}
-        >
-        {/*type*/}
-        <View style={styles.container}>
+      <View style={{backgroundColor: '#485A96', flex: 1}}>
+        <View style={{flex: 0.5}}>
           <Header />
-          {/*<Button
-            onPress={this.props.openDrawer}
-            title="Open Drawer"
-            />*/}
-
-          {/*type}
-
-          <Footer />
-          */}
         </View>
-      </ScrollView>
+        {/* display */}
+        <View style={styles.container}>
+          <Text style={styles.title}>
+            Bienvenido
+          </Text>
+          <Form
+            ref="form"
+            type={Person}
+            options={options}
+          />
+          <CheckBox
+            label='Recordar'
+            checked={false}
+            onChange={(checked) => console.log('I am checked', checked)}
+          />
+          <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
+            <Text style={styles.buttonText}>Aceptar</Text>
+          </TouchableHighlight>
+          <TouchableHighlight onPress={this.onPress} underlayColor='#99d9f4'>
+            <Text style={styles.buttonText}>¿Olvidó su Contraseña?</Text>
+          </TouchableHighlight>
+          <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
+            <Text style={styles.buttonText}>Crear una Cuenta nueva</Text>
+          </TouchableHighlight>
+        </View>
+        <View style={{flex: 1}}>
+          <Footer />
+        </View>
+      </View>
     )
   }
 }
 
-
+var styles = StyleSheet.create({
+  container: {
+    padding: 20,
+    backgroundColor: '#cbd2e6',
+    flex: 4
+  },
+  title: {
+    fontSize: 30,
+    alignSelf: 'center',
+  },
+  buttonText: {
+    fontSize: 18,
+    color: 'white',
+    alignSelf: 'center',
+    marginBottom: 10
+  },
+  button: {
+    height: 36,
+    backgroundColor: '#F19700',
+    borderColor: '#F19700',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 10,
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    marginBottom: 30
+  }
+});
 
 // Shadow props are not supported in React-Native Android apps.
 // The below part handles this issue.

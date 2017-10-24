@@ -9,7 +9,8 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableOpacity
 } from 'react-native';
 
 import Home from './components/home/home';
@@ -19,6 +20,7 @@ import Contact from './components/contact/contact';
 
 import { StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation';
 
+import Menu, { MenuContext, MenuOptions, MenuOption, MenuTrigger } from 'react-native-menu';
 
 
 {/*
@@ -40,12 +42,11 @@ import { StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation'
     }
   }
 */}
-
 const App = DrawerNavigator({
   'Inicio'          : { screen: Home },
   'Login'           : { screen: Login },
   'Publicar Gratis' : { screen: FreePublish },
-  'Contacto'        : { screen: Contact }
+  'Contáctenos'        : { screen: Contact }
 },
 {
   //drawerWidth: 200,
@@ -54,6 +55,36 @@ const App = DrawerNavigator({
   drawerBackgroundColor: 'transparent'
 });
 
+{/*
+
+const App = () => (
+  // You need to place a MenuContext somewhere in your application, usually at the root.
+  // Menus will open within the context, and only one menu can open at a time per context.
+  <MenuContext style={{ flex: 1 }}>
+    <TopNavigation/>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}><Text>Hello!</Text></View>
+  </MenuContext>
+);
+const renderTouchable = () => <TouchableOpacity/>;
+const TopNavigation = () => (
+  <View style={{ padding: 10, flexDirection: 'row', backgroundColor: 'pink' }}>
+    <View style={{ flex: 1 }}><Text>My App</Text></View>
+    <Menu onSelect={(value) => alert(`User selected the number ${value}`)}>
+      <MenuTrigger>
+        <Text style={{ fontSize: 20 }}>&#8942;</Text>
+      </MenuTrigger>
+      <MenuOptions>
+        <MenuOption value={1} renderTouchable={renderTouchable}>
+          <Text>One</Text>
+        </MenuOption>
+        <MenuOption value={2} renderTouchable={renderTouchable}>
+          <Text>Two</Text>
+        </MenuOption>
+      </MenuOptions>
+    </Menu>
+  </View>
+);
+*/}
 
 
 export default App;
