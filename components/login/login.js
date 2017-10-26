@@ -95,37 +95,39 @@ export default class MyMainView extends Component {
   render(){
     return (
       <View style={{backgroundColor: '#485A96', flex: 1}}>
-        <View style={{flex: 0.5}}>
+        <View style={{height: 56}}>
           <Header />
         </View>
-        {/* display */}
-        <View style={styles.container}>
-          <Text style={styles.title}>
-            Bienvenido
-          </Text>
-          <Form
-            ref="form"
-            type={Person}
-            options={options}
-          />
-          <CheckBox
-            label='Recordar'
-            checked={false}
-            onChange={(checked) => console.log('I am checked', checked)}
-          />
-          <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
-            <Text style={styles.buttonText}>Aceptar</Text>
-          </TouchableHighlight>
-          <TouchableHighlight onPress={this.onPress} underlayColor='#99d9f4'>
-            <Text style={styles.buttonText}>¿Olvidó su Contraseña?</Text>
-          </TouchableHighlight>
-          <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
-            <Text style={styles.buttonText}>Crear una Cuenta nueva</Text>
-          </TouchableHighlight>
-        </View>
-        <View style={{flex: 1}}>
-          <Footer />
-        </View>
+
+        <ScrollView>
+          <View style={styles.container}>
+            <Text style={styles.title}>
+              Bienvenido
+            </Text>
+            <Form
+              ref="form"
+              type={Person}
+              options={options}
+            />
+            <CheckBox
+              label='Recordar'
+              checked={false}
+              onChange={(checked) => console.log('I am checked', checked)}
+            />
+            <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
+              <Text style={styles.buttonText}>Aceptar</Text>
+            </TouchableHighlight>
+            <TouchableHighlight onPress={this.onPress} underlayColor='#99d9f4'>
+              <Text style={styles.buttonText}>¿Olvidó su Contraseña?</Text>
+            </TouchableHighlight>
+            <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
+              <Text style={styles.buttonText}>Crear una Cuenta nueva</Text>
+            </TouchableHighlight>
+          </View>
+          <View style={{height: 70}}>
+            <Footer />
+          </View>
+        </ScrollView>
       </View>
     )
   }

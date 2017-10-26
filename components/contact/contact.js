@@ -60,26 +60,28 @@ export default class MyMainView extends Component {
   render(){
     return (
       <View style={{backgroundColor: '#485A96', flex: 1}}>
-        <View style={{flex: 0.5}}>
+        <View style={{height: 56}}>
           <Header />
         </View>
         {/* display */}
-        <View style={styles.container}>
-          <Text style={styles.title}>
-            Contáctanos
-          </Text>
-          <Form
-            ref="form"
-            type={Person}
-            options={options}
-          />
-          <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
-            <Text style={styles.buttonText}>Enviar</Text>
-          </TouchableHighlight>
-        </View>
-        <View style={{flex: 1}}>
-          <Footer />
-        </View>
+        <ScrollView>
+          <View style={styles.container}>
+            <Text style={styles.title}>
+              Contáctanos
+            </Text>
+            <Form
+              ref="form"
+              type={Person}
+              options={options}
+            />
+            <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
+              <Text style={styles.buttonText}>Enviar</Text>
+            </TouchableHighlight>
+          </View>
+          <View style={{height: 70}}>
+            <Footer />
+          </View>
+        </ScrollView>
       </View>
     )
   }
@@ -89,7 +91,7 @@ var styles = StyleSheet.create({
   container: {
     padding: 20,
     backgroundColor: '#cbd2e6',
-    flex: 4
+    height: 400
   },
   title: {
     fontSize: 30,

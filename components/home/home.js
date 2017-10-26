@@ -49,188 +49,194 @@ export default class MyMainView extends Component {
 
   render(){
     return (
-      <ScrollView
-        pointerEvents="box-none"
-        style={styles.scrollView}
-        scrollEventThrottle={200}
-        contentInset={{top: 0}}
-        >
-        <View style={styles.container}>
+      <View>
+        <View style={{height: 56}}>
           <Header />
-
-          <View style={localStyles.homeFiltroContainer}>
-            <Text  style={localStyles.homeFiltroTitle}>Realiza tu búsqueda aquí</Text>
-            <Picker
-              //selectedValue={this.state.language}
-              onValueChange={(itemValue, itemIndex) => this.setState({language: itemValue})}>
-              <Picker.Item label="¿Qué buscas?" value="¿Qué buscas?" />
-              <Picker.Item label="Prueba" value="prueba" />
-            </Picker>
-            <Picker
-              //selectedValue={this.state.language}
-              onValueChange={(itemValue, itemIndex) => this.setState({language: itemValue})}>
-              <Picker.Item label="Operación" value="Operacion" />
-              <Picker.Item label="Prueba" value="prueba" />
-            </Picker>
-            <Button
-              style={{width: 10}}
-              onPress={() => {}}
-              title="Buscar"
-              color="#F19700"
-              accessibilityLabel="Learn more about this purple button"
-            />
-          </View>
-
-          {/*type*/}
-          <View style={styles.categoryContainer}>
-            <Text style={styles.categoryLabel}>NOTICIAS INMOBILIARIAS</Text>
-          </View>
-          <View>
-            <View style={styles.row}>
-              <Card>
-                <CardTitle>
-                  <Image
-                    style={{height:200, width:200}}
-                    source={require('./casa.png')}
-                  />
-                </CardTitle>
-                <CardContent>
-                  <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-                </CardContent>
-                <CardAction >
-                  <Button
-                    onPress={() => {}}
-                    title="Leer más"
-                    color="#F19700"
-                    accessibilityLabel="Learn more about this purple button"
-                  />
-                </CardAction>
-              </Card>
-            </View>
-            <View style={styles.row}>
-              <Card>
-                <CardTitle>
-                <Image
-                  style={{height:200, width:200}}
-                  source={require('./casa.png')}
-                />
-                </CardTitle>
-                <CardContent>
-                  <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-                </CardContent>
-                <CardAction >
-
-                  <Button
-                    onPress={() => {}}
-                    title="Leer más"
-                    color="#F19700"
-                    accessibilityLabel="Learn more about this purple button"
-                  />
-                </CardAction>
-              </Card>
-            </View>
-          </View>
-
-
-          {/*side*/}
-          <View style={styles.categoryContainer}>
-            <Text style={styles.categoryLabel}>PUBLICACIONES</Text>
-          </View>
-          <View>
-            <View style={styles.row}>
-              <Card>
-                <CardTitle>
-                  <Image
-                    style={{height:200, width:200}}
-                    source={require('./casa.png')}
-                  />
-                </CardTitle>
-                <CardContent>
-                <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-                </CardContent>
-                <CardAction >
-                  <Button
-                    onPress={() => {}}
-                    title="Leer más"
-                    color="#F19700"
-                    accessibilityLabel="Learn more about this purple button"
-                  />
-                </CardAction>
-              </Card>
-            </View>
-            <View style={styles.row}>
-              <Card>
-                <CardTitle>
-                  <Image
-                    style={{height:200, width:200}}
-                    source={require('./casa.png')}
-                  />
-                </CardTitle>
-                <CardContent>
-                <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-                </CardContent>
-                <CardAction >
-                  <Button
-                    onPress={() => {}}
-                    title="Leer más"
-                    color="#F19700"
-                    accessibilityLabel="Learn more about this purple button"
-                  />
-                </CardAction>
-              </Card>
-            </View>
-          </View>
-          {/*trigger options*/}
-          <View style={styles.categoryContainer}>
-            <Text style={styles.categoryLabel}>AGENCIAS DESTACADAS</Text>
-          </View>
-          <View>
-            <View style={styles.row}>
-              <Card>
-                <CardTitle>
-                  <Image
-                    style={{height:200, width:200}}
-                    source={require('./casa.png')}
-                  />
-                </CardTitle>
-                <CardContent>
-                <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-                </CardContent>
-                <CardAction >
-                  <Button
-                    onPress={() => {}}
-                    title="Leer más"
-                    color="#F19700"
-                    accessibilityLabel="Learn more about this purple button"
-                  />
-                </CardAction>
-              </Card>
-            </View>
-            <View style={styles.row}>
-              <Card>
-                <CardTitle>
-                  <Image
-                    style={{height:200, width:200}}
-                    source={require('./casa.png')}
-                  />
-                </CardTitle>
-                <CardContent>
-                <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-                </CardContent>
-                <CardAction >
-                  <Button
-                    onPress={() => {}}
-                    title="Leer más"
-                    color="#F19700"
-                    accessibilityLabel="Learn more about this purple button"
-                  />
-                </CardAction>
-              </Card>
-            </View>
-          </View>
-          <Footer />
         </View>
-      </ScrollView>
+        <ScrollView
+          pointerEvents="box-none"
+          style={styles.scrollView}
+          scrollEventThrottle={200}
+          contentInset={{top: 0}}
+          >
+          <View style={styles.container}>
+
+            <View style={localStyles.homeFiltroContainer}>
+              <Text  style={localStyles.homeFiltroTitle}>Realiza tu búsqueda aquí</Text>
+              <Picker
+                //selectedValue={this.state.language}
+                onValueChange={(itemValue, itemIndex) => this.setState({language: itemValue})}>
+                <Picker.Item label="¿Qué buscas?" value="¿Qué buscas?" />
+                <Picker.Item label="Prueba" value="prueba" />
+              </Picker>
+              <Picker
+                //selectedValue={this.state.language}
+                onValueChange={(itemValue, itemIndex) => this.setState({language: itemValue})}>
+                <Picker.Item label="Operación" value="Operacion" />
+                <Picker.Item label="Prueba" value="prueba" />
+              </Picker>
+              <Button
+                style={{width: 10}}
+                onPress={() => {}}
+                title="Buscar"
+                color="#F19700"
+                accessibilityLabel="Learn more about this purple button"
+              />
+            </View>
+
+            {/*
+            <View style={styles.categoryContainer}>
+              <Text style={styles.categoryLabel}>NOTICIAS INMOBILIARIAS</Text>
+            </View>
+            <View>
+              <View style={styles.row}>
+                <Card>
+                  <CardTitle>
+                    <Image
+                      style={{height:200, width:200}}
+                      source={require('./casa.png')}
+                    />
+                  </CardTitle>
+                  <CardContent>
+                    <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+                  </CardContent>
+                  <CardAction >
+                    <Button
+                      onPress={() => {}}
+                      title="Leer más"
+                      color="#F19700"
+                      accessibilityLabel="Learn more about this purple button"
+                    />
+                  </CardAction>
+                </Card>
+              </View>
+              <View style={styles.row}>
+                <Card>
+                  <CardTitle>
+                  <Image
+                    style={{height:200, width:200}}
+                    source={require('./casa.png')}
+                  />
+                  </CardTitle>
+                  <CardContent>
+                    <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+                  </CardContent>
+                  <CardAction >
+
+                    <Button
+                      onPress={() => {}}
+                      title="Leer más"
+                      color="#F19700"
+                      accessibilityLabel="Learn more about this purple button"
+                    />
+                  </CardAction>
+                </Card>
+              </View>
+            </View>
+            */}
+
+            {/*side*/}
+            <View style={styles.categoryContainer}>
+              <Text style={styles.categoryLabel}>PUBLICACIONES</Text>
+            </View>
+            <View>
+              <View style={styles.row}>
+                <Card>
+                  <CardTitle>
+                    <Image
+                      style={{height:200, width:200}}
+                      source={require('./casa.png')}
+                    />
+                  </CardTitle>
+                  <CardContent>
+                  <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+                  </CardContent>
+                  <CardAction >
+                    <Button
+                      onPress={() => {}}
+                      title="Leer más"
+                      color="#F19700"
+                      accessibilityLabel="Learn more about this purple button"
+                    />
+                  </CardAction>
+                </Card>
+              </View>
+              <View style={styles.row}>
+                <Card>
+                  <CardTitle>
+                    <Image
+                      style={{height:200, width:200}}
+                      source={require('./casa.png')}
+                    />
+                  </CardTitle>
+                  <CardContent>
+                  <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+                  </CardContent>
+                  <CardAction >
+                    <Button
+                      onPress={() => {}}
+                      title="Leer más"
+                      color="#F19700"
+                      accessibilityLabel="Learn more about this purple button"
+                    />
+                  </CardAction>
+                </Card>
+              </View>
+            </View>
+            {/*trigger options*/}
+            <View style={styles.categoryContainer}>
+              <Text style={styles.categoryLabel}>AGENCIAS DESTACADAS</Text>
+            </View>
+            <View>
+              <View style={styles.row}>
+                <Card>
+                  <CardTitle>
+                    <Image
+                      style={{height:200, width:200}}
+                      source={require('./casa.png')}
+                    />
+                  </CardTitle>
+                  <CardContent>
+                  <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+                  </CardContent>
+                  <CardAction >
+                    <Button
+                      onPress={() => {}}
+                      title="Leer más"
+                      color="#F19700"
+                      accessibilityLabel="Learn more about this purple button"
+                    />
+                  </CardAction>
+                </Card>
+              </View>
+              <View style={styles.row}>
+                <Card>
+                  <CardTitle>
+                    <Image
+                      style={{height:200, width:200}}
+                      source={require('./casa.png')}
+                    />
+                  </CardTitle>
+                  <CardContent>
+                  <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
+                  </CardContent>
+                  <CardAction >
+                    <Button
+                      onPress={() => {}}
+                      title="Leer más"
+                      color="#F19700"
+                      accessibilityLabel="Learn more about this purple button"
+                    />
+                  </CardAction>
+                </Card>
+              </View>
+            </View>
+            <View style={{height: 150}}>
+              <Footer />
+            </View>
+          </View>
+        </ScrollView>
+      </View>
     )
   }
 }
