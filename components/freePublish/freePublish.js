@@ -8,11 +8,14 @@ import {
   ScrollView,
   Text,
   StyleSheet,
-  Platform,Button
+  Platform,
+  Button,
+  Image
 } from 'react-native';
 
 import Header from './../_partials/header/header';
 import Footer from './../_partials/footer/footer';
+import Publication from './../_partials/publication/publication';
 
 import {
   Card,
@@ -38,32 +41,82 @@ export default class MyMainView extends Component {
     this.props.setParentState(args)
   }
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoading: true,
+      publications: new Array()
+    }
+  }
+
+  getData(){
+    return fetch('https://alquileres-pisos.com/rest/search/?limit=8&offset=0', {
+      method: 'GET',
+    headers: {
+      'api-key': '$2y$10$HNKLFs5FUQCVnzHbVH18O.hovhZaRHorsm29rmaQbA4TPKmp0qTeu'
+    }}
+    )
+    .then((data) => data.json())
+    .then((dataJson) => {
+      this.setState({
+          publications: dataJson.publications,
+          isLoading: false
+        }, function() {
+          // do something with new state
+        });
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+  }
+
+  componentDidMount(){
+    this.getData();
+  }
+
   render(){
     return (
-      <ScrollView
-        pointerEvents="box-none"
-        style={styles.scrollView}
-        scrollEventThrottle={200}
-        contentInset={{top: 0}}
-        >
-        <View style={styles.container}>
+      <View>
+        <View style={{height: 70}}>
           <Header />
-          {/*<Button
-            onPress={this.props.openDrawer}
-            title="Open Drawer"
-            />*/}
-
-          {/*type}
-
-          <Footer />
-          */}
         </View>
-      </ScrollView>
+        <ScrollView
+          pointerEvents="box-none"
+          style={styles.scrollView}
+          scrollEventThrottle={200}
+          contentInset={{top: 0}}
+          >
+
+          <View style={styles.container}>
+            <View style={localStyles.breadcrumb}>
+              <Text>inicio / Publicaciones</Text>
+            </View>
+            {this.state.isLoading ? <Image style={{height:40, width:40}} source={require('./loading.gif')} /> : false}
+            {this.state.publications.map((prop, key) => {
+               return (
+                 <Publication key={key} data={prop} />
+               );
+            })}
+            <View style={{height: 150}}>
+              <Footer />
+            </View>
+          </View>
+        </ScrollView>
+      </View>
     )
   }
 }
 
-
+var localStyles = StyleSheet.create({
+  breadcrumb: {
+    backgroundColor: '#F2F2F2',
+    borderRadius: 10,
+    height: 60,
+    margin: 5,
+    padding: 5
+  },
+});
 
 // Shadow props are not supported in React-Native Android apps.
 // The below part handles this issue.

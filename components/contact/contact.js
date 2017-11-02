@@ -60,7 +60,7 @@ export default class MyMainView extends Component {
   render(){
     return (
       <View style={{backgroundColor: '#485A96', flex: 1}}>
-        <View style={{height: 56}}>
+        <View style={{height: 70}}>
           <Header />
         </View>
         {/* display */}

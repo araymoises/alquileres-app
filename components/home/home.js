@@ -27,6 +27,7 @@ import {
 import styles from './../../styles';
 import Header from './../_partials/header/header';
 import Footer from './../_partials/footer/footer';
+import ModalDropdown from 'react-native-modal-dropdown';
 
 
 //import Button from './Button';
@@ -50,7 +51,7 @@ export default class MyMainView extends Component {
   render(){
     return (
       <View>
-        <View style={{height: 56}}>
+        <View style={{height: 70}}>
           <Header />
         </View>
         <ScrollView
@@ -60,7 +61,6 @@ export default class MyMainView extends Component {
           contentInset={{top: 0}}
           >
           <View style={styles.container}>
-
             <View style={localStyles.homeFiltroContainer}>
               <Text  style={localStyles.homeFiltroTitle}>Realiza tu búsqueda aquí</Text>
               <Picker
