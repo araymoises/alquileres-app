@@ -10,17 +10,30 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  TouchableHighlight,
+  Button,
+  Image
 } from 'react-native';
 
 import Home from './components/home/home';
 import Login from './components/login/login';
 import FreePublish from './components/freePublish/freePublish';
 import Contact from './components/contact/contact';
+import Header from './components/_partials/header/header';
+
+import styles from './styles';
+import ModalDropdown from 'react-native-modal-dropdown';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
+import Reducers from './redux/reducers';
+import SuperheroesList from './redux/superheroesList';
 
 import { StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation';
 
-import Menu, { MenuContext, MenuOptions, MenuOption, MenuTrigger } from 'react-native-menu';
+//import Menu, { MenuContext, MenuOptions, MenuOption, MenuTrigger } from 'react-native-menu';
 
 
 {/*
@@ -42,6 +55,66 @@ import Menu, { MenuContext, MenuOptions, MenuOption, MenuTrigger } from 'react-n
     }
   }
 */}
+
+const Menu = (props) => (
+  <View style={localStyles.container}>
+    <Text style={localStyles.logo}>
+      <Image
+        source={require('./logo-negativo.png')}
+      />
+    </Text>
+    <ModalDropdown
+      options={['Inicio', 'Listado de Publicaciones', 'Contáctanos']}
+      onSelect={(idx, value) => value != props.navigation.state.routeName ? props.navigation.navigate(value) : false}
+      showsVerticalScrollIndicator={false}
+      style={styles.tabIcon}
+      dropdownStyle={{borderRadius: 5, height: 120}}
+      dropdownTextStyle={{color: '#485A96', fontSize: 13}}
+      >
+      <Icon name="navicon" size={40} color="#F19700" />
+    </ModalDropdown>
+    {/*
+    <TouchableHighlight onPress={() => props.navigation.navigate('Inicio')} style={styles.tabIcon}>
+      <Icon name="navicon" size={40} color="#F19700" />
+    </TouchableHighlight>
+    */}
+    <TouchableHighlight onPress={() => props.navigation.navigate('Login')} underlayColor={'#485A96'} style={styles.tabIcon}>
+      <Icon name="user" size={40} color="#F19700" />
+    </TouchableHighlight>
+  </View>
+);
+
+const Stack = StackNavigator(
+ {
+   'Inicio': { screen: Home },
+   'Login': { screen: Login },
+   'Listado de Publicaciones': { screen: FreePublish },
+   'Contáctanos': { screen: Contact },
+ },
+ {
+   headerMode: 'float',
+   mode: 'modal',
+
+   navigationOptions: ({navigation}) => ({
+     headerBackTitle: 'none',
+     header: <Menu navigation={navigation}/>,
+    }),
+ }
+);
+
+class App extends Component {
+  render() {
+    return (
+      <Provider store={createStore(Reducers)}>
+        <SuperheroesList />
+      </Provider>
+    );
+  }
+}
+
+//<Button onPress={() => navigation.navigate('Login')} />,
+
+{/*
 const App = DrawerNavigator({
   'Inicio'          : { screen: Home },
   'Login'           : { screen: Login },
@@ -54,7 +127,7 @@ const App = DrawerNavigator({
   //contentComponent: props => <ScrollView><DrawerItems {...props} /></ScrollView>,
   drawerBackgroundColor: 'transparent'
 });
-
+*/}
 {/*
 
 const App = () => (
@@ -85,6 +158,18 @@ const TopNavigation = () => (
   </View>
 );
 */}
-
+var localStyles = StyleSheet.create({
+  container: {
+    padding: 8,
+    paddingRight: 0,
+    flexDirection: 'row',
+    backgroundColor: '#485A96'
+  },
+  logo: {
+    flexDirection: 'column',
+    flex: 3,
+    margin: 5
+  },
+});
 
 export default App;

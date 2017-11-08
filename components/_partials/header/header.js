@@ -41,6 +41,7 @@ export default class Header extends Component{
             source={require('./logo-negativo.png')}
           />
         </Text>
+        {/*
         <ModalDropdown
           options={['Inicio', 'Publicar Gratis', 'Contáctanos']}
           onSelect={(idx, value) => this.onButtonPress(idx, value)}
@@ -48,6 +49,10 @@ export default class Header extends Component{
           >
           <Icon name="navicon" size={40} color="#F19700" />
         </ModalDropdown>
+        */}
+        <TouchableHighlight onPress={this._onPressButton} style={styles.tabIcon}>
+          <Icon name="navicon" size={40} color="#F19700" />
+        </TouchableHighlight>
         <TouchableHighlight onPress={this._onPressButton} style={styles.tabIcon}>
           <Icon name="user" size={40} color="#F19700" />
         </TouchableHighlight>

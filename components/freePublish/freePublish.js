@@ -78,9 +78,11 @@ export default class MyMainView extends Component {
   render(){
     return (
       <View>
-        <View style={{height: 70}}>
-          <Header />
-        </View>
+      {/*
+      <View style={{height: 70}}>
+        <Header />
+      </View>
+      */}
         <ScrollView
           pointerEvents="box-none"
           style={styles.scrollView}

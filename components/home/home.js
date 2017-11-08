@@ -27,6 +27,9 @@ import {
 import styles from './../../styles';
 import Header from './../_partials/header/header';
 import Footer from './../_partials/footer/footer';
+import Publication from './../_partials/publication/publication';
+
+
 import ModalDropdown from 'react-native-modal-dropdown';
 
 
@@ -48,12 +51,48 @@ export default class MyMainView extends Component {
     this.props.setParentState(args)
   }
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isLoading: true,
+      publications: new Array()
+    }
+  }
+
+  getPublications(){
+    return fetch('https://alquileres-pisos.com/rest/search/?limit=2&offset=0', {
+      method: 'GET',
+    headers: {
+      'api-key': '$2y$10$HNKLFs5FUQCVnzHbVH18O.hovhZaRHorsm29rmaQbA4TPKmp0qTeu'
+    }}
+    )
+    .then((data) => data.json())
+    .then((dataJson) => {
+      this.setState({
+          publications: dataJson.publications,
+          isLoading: false
+        }, function() {
+          // do something with new state
+        });
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+  }
+
+  componentDidMount(){
+    this.getPublications();
+  }
+
   render(){
     return (
       <View>
+        {/*
         <View style={{height: 70}}>
           <Header />
         </View>
+        */}
         <ScrollView
           pointerEvents="box-none"
           style={styles.scrollView}
@@ -140,49 +179,14 @@ export default class MyMainView extends Component {
               <Text style={styles.categoryLabel}>PUBLICACIONES</Text>
             </View>
             <View>
-              <View style={styles.row}>
-                <Card>
-                  <CardTitle>
-                    <Image
-                      style={{height:200, width:200}}
-                      source={require('./casa.png')}
-                    />
-                  </CardTitle>
-                  <CardContent>
-                  <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-                  </CardContent>
-                  <CardAction >
-                    <Button
-                      onPress={() => {}}
-                      title="Leer más"
-                      color="#F19700"
-                      accessibilityLabel="Learn more about this purple button"
-                    />
-                  </CardAction>
-                </Card>
-              </View>
-              <View style={styles.row}>
-                <Card>
-                  <CardTitle>
-                    <Image
-                      style={{height:200, width:200}}
-                      source={require('./casa.png')}
-                    />
-                  </CardTitle>
-                  <CardContent>
-                  <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-                  </CardContent>
-                  <CardAction >
-                    <Button
-                      onPress={() => {}}
-                      title="Leer más"
-                      color="#F19700"
-                      accessibilityLabel="Learn more about this purple button"
-                    />
-                  </CardAction>
-                </Card>
-              </View>
+            {this.state.isLoading ? <Image style={{height:40, width:40}} source={require('./loading.gif')} /> : false}
+            {this.state.publications.map((prop, key) => {
+               return (
+                 <Publication key={key} data={prop} />
+               );
+            })}
             </View>
+
             {/*trigger options*/}
             <View style={styles.categoryContainer}>
               <Text style={styles.categoryLabel}>AGENCIAS DESTACADAS</Text>
