@@ -15,8 +15,12 @@ import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 import IconIonicons from 'react-native-vector-icons/Ionicons';
 import IconZocial from 'react-native-vector-icons/Zocial';
 
+import * as actions from './../../../redux/actions';
+import {connect} from 'react-redux';
+
 export default class Footer extends Component{
   render() {
+    console.log(this.props);
     return(
       <View style={localStyles.container}>
         <View style={{flexDirection: 'row', paddingTop:10, paddingRight:20, paddingLeft:20}}>
