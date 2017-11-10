@@ -12,7 +12,9 @@ class SuperheroesList extends Component {
     });
   }
   render(){
+    console.log("this.props");
     console.log(this.props);
+    console.log("this.state");
     console.log(this.state);
     return(
       <View>
@@ -27,7 +29,7 @@ class SuperheroesList extends Component {
           onPress={() => this.props.selected_tab('TAB_3')}
           title="Botón #3" />
         <Button
-          onPress={() => alert(this.props.selected_tab)}
+          onPress={() => alert(this.props.tabsId)}
           title="Resultado" />
       </View>
     )
@@ -37,8 +39,8 @@ class SuperheroesList extends Component {
 const mapStateToProps = state => {
   return {
     superheroes: state.superheroes,
-    //tabsId: state.tabId
+    tabsId: state.tabId
   }
 }
 
-export default connect(mapStateToProps)(SuperheroesList)
+export default connect(mapStateToProps, actions)(SuperheroesList)
