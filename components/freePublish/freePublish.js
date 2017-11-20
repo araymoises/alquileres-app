@@ -100,7 +100,7 @@ export default class MyMainView extends Component {
                  <Publication key={key} data={prop} />
                );
             })}
-            <View style={{height: 150}}>
+            <View style={{height: 95}}>
               <Footer />
             </View>
           </View>

@@ -28,6 +28,7 @@ import styles from './../../styles';
 import Header from './../_partials/header/header';
 import Footer from './../_partials/footer/footer';
 import Publication from './../_partials/publication/publication';
+import Agency from './../_partials/agency/agency';
 
 
 import ModalDropdown from 'react-native-modal-dropdown';
@@ -55,8 +56,10 @@ export default class MyMainView extends Component {
     super(props);
 
     this.state = {
-      isLoading: true,
-      publications: new Array()
+      isLoadingPublications: true,
+      isLoadingAgencies: true,
+      publications: new Array(),
+      agencies: new Array(),
     }
   }
 
@@ -71,7 +74,28 @@ export default class MyMainView extends Component {
     .then((dataJson) => {
       this.setState({
           publications: dataJson.publications,
-          isLoading: false
+          isLoadingPublications: false
+        }, function() {
+          // do something with new state
+        });
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+  }
+
+  getAgencies(){
+    return fetch('https://alquileres-pisos.com/rest/agencias', {
+      method: 'GET',
+    headers: {
+      'api-key': '$2y$10$HNKLFs5FUQCVnzHbVH18O.hovhZaRHorsm29rmaQbA4TPKmp0qTeu'
+    }}
+    )
+    .then((data) => data.json())
+    .then((dataJson) => {
+      this.setState({
+          agencies: dataJson,
+          isLoadingAgencies: false
         }, function() {
           // do something with new state
         });
@@ -83,6 +107,7 @@ export default class MyMainView extends Component {
 
   componentDidMount(){
     this.getPublications();
+    this.getAgencies();
   }
 
   render(){
@@ -174,68 +199,32 @@ export default class MyMainView extends Component {
             </View>
             */}
 
-            {/*side*/}
+            {/*PUBLICACIONES DESTACADAS*/}
             <View style={styles.categoryContainer}>
               <Text style={styles.categoryLabel}>PUBLICACIONES</Text>
             </View>
             <View>
-            {this.state.isLoading ? <Image style={{height:40, width:40}} source={require('./loading.gif')} /> : false}
-            {this.state.publications.map((prop, key) => {
-               return (
-                 <Publication key={key} data={prop} />
-               );
-            })}
+              {this.state.isLoadingPublications ? <Image style={{height:40, width:40}} source={require('./loading.gif')} /> : false}
+              {this.state.publications.map((prop, key) => {
+                 return (
+                   <Publication key={key} data={prop} />
+                 );
+              })}
             </View>
 
-            {/*trigger options*/}
+            {/*AGENCIAS DESTACADAS*/}
             <View style={styles.categoryContainer}>
               <Text style={styles.categoryLabel}>AGENCIAS DESTACADAS</Text>
             </View>
             <View>
-              <View style={styles.row}>
-                <Card>
-                  <CardTitle>
-                    <Image
-                      style={{height:200, width:200}}
-                      source={require('./casa.png')}
-                    />
-                  </CardTitle>
-                  <CardContent>
-                  <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-                  </CardContent>
-                  <CardAction >
-                    <Button
-                      onPress={() => {}}
-                      title="Leer más"
-                      color="#F19700"
-                      accessibilityLabel="Learn more about this purple button"
-                    />
-                  </CardAction>
-                </Card>
-              </View>
-              <View style={styles.row}>
-                <Card>
-                  <CardTitle>
-                    <Image
-                      style={{height:200, width:200}}
-                      source={require('./casa.png')}
-                    />
-                  </CardTitle>
-                  <CardContent>
-                  <Text style={{textAlign: 'center'}} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</Text>
-                  </CardContent>
-                  <CardAction >
-                    <Button
-                      onPress={() => {}}
-                      title="Leer más"
-                      color="#F19700"
-                      accessibilityLabel="Learn more about this purple button"
-                    />
-                  </CardAction>
-                </Card>
-              </View>
+              {this.state.isLoadingAgencies ? <Image style={{height:40, width:40}} source={require('./loading.gif')} /> : false}
+              {this.state.agencies.map((prop, key) => {
+                 return (
+                   <Agency key={key} data={prop} />
+                 );
+              })}
             </View>
-            <View style={{height: 150}}>
+            <View style={{height: 95}}>
               <Footer />
             </View>
           </View>

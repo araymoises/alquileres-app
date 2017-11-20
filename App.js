@@ -106,7 +106,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={createStore(Reducers)}>
-        <SuperheroesList />
+        <Stack />
       </Provider>
     );
   }
